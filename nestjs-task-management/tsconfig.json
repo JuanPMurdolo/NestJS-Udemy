@@ -20,6 +20,5 @@
   },
   "include": [
     "**/*",
-    "src/tasks/tasks.model.ts" // Add the missing file path here
   ]
 }
