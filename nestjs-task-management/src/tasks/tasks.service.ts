@@ -7,7 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class TasksService {
-    constructor(@InjectRepository(Task) private taskRepository: TaskRepository<Task>){
+    constructor(@InjectRepository(Task) private taskRepository: TaskRepository){
 
     }
 
@@ -27,16 +27,9 @@ export class TasksService {
         return found;
     }
 
-    async createTask(createTaskDTO: CreateTaskDTO): Promise<Task>{
-        const { title, description } = createTaskDTO;
-        const task = this.taskRepository.create({
-            title,
-            description,
-            status: TaskStatus.OPEN,
-        });
-        await this.taskRepository.save(task);
-        return task;
-    }
+    createTask(createTaskDto: CreateTaskDTO): Promise<Task> {
+        return this.taskRepository.createTask(createTaskDto);
+      }
 
     async deleteTask(id: string): Promise<void>{
         const result = await this.taskRepository.delete(id);
