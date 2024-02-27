@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TasksModule } from './tasks/tasks.module';
 import { Type } from 'class-transformer';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [TasksModule,
@@ -15,7 +16,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     password: 'postgres',
     database: 'task-management',
     autoLoadEntities: true,
-    synchronize: true})
+    synchronize: true}),
+  AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
