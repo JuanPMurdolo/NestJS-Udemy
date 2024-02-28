@@ -12,4 +12,11 @@ export class AuthController {
     signUp(@Body() AuthCredentialsDto: AuthCredentialsDto): Promise<void> {
         return this.authService.signUp(AuthCredentialsDto);
     }
+
+    @Post('/signin')
+    signIn(@Body() AuthCredentialsDto: AuthCredentialsDto): Promise<{accessToken: string}> {
+        return this.authService.signIn(AuthCredentialsDto);
+    }
+
+
 }
