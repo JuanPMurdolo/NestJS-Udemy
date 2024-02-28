@@ -17,7 +17,7 @@ import { config } from 'process';
   TasksModule,
   TypeOrmModule.forRoot({
     imports: [ConfigModule],
-    inject: [ConfigModule],
+    inject: [ConfigService],
     useFactory: async (configService: ConfigService) => ({
       type: configService.get('DB_TYPE'),
       host: configService.get('DB_HOST'),
